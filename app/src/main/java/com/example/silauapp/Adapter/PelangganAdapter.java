@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.silauapp.EditActivity;
-import com.example.silauapp.Model.Pelanggan;
+import com.example.silauapp.PelangganEdit;
+import com.example.silauapp.Model.Pelanggan.Pelanggan;
 import com.example.silauapp.R;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(view.getContext(), EditActivity.class);
+                Intent mIntent = new Intent(view.getContext(), PelangganEdit.class);
                 mIntent.putExtra("Id", mKontakList.get(position).getId());
                 mIntent.putExtra("Nama", mKontakList.get(position).getNama());
                 mIntent.putExtra("Nomor", mKontakList.get(position).getNomor());
@@ -47,7 +47,10 @@ public class PelangganAdapter extends RecyclerView.Adapter<PelangganAdapter.MyVi
 
     @Override
     public int getItemCount () {
-        return mKontakList.size();
+        if(mKontakList != null)
+            return mKontakList.size();
+        else
+            return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

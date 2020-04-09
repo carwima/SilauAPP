@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 //cek local ip computer nanti
 public class ApiClient {
-    public static final String BASE_URL = "http://192.168.43.201/rest_ci/index.php/";
+    public static final String BASE_URL = "http://192.168.100.12:8020/API/";
     private static Retrofit retrofit = null;
     public static Retrofit getClient() {
         if (retrofit==null) {
@@ -15,5 +15,5 @@ public class ApiClient {
                     .build();
         }
         return retrofit;
-    }
+    }//
 }

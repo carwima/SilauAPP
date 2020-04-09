@@ -1,72 +1,98 @@
 package com.example.silauapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
+import com.example.silauapp.Model.Pelanggan.Pelanggan;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
-import android.widget.Button;
 
-import com.example.silauapp.Adapter.PelangganAdapter;
-import com.example.silauapp.Model.GetPelanggan;
-import com.example.silauapp.Model.Pelanggan;
-import com.example.silauapp.Rest.ApiClient;
-import com.example.silauapp.Rest.ApiInterface;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-import java.util.List;
+import com.google.android.material.navigation.NavigationView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.view.Menu;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button btIns;
-    ApiInterface mApiInterface;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    public static MainActivity ma;
-
+    private AppBarConfiguration mAppBarConfiguration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainactivity);
 
-        btIns = (Button) findViewById(R.id.btIns);
-        btIns.setOnClickListener(new View.OnClickListener() {
+        Intent i = getIntent();
+        Pelanggan login_data = (Pelanggan)i.getSerializableExtra("sampleObject");
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setVisibility(View.GONE);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, InsertActivity.class));
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
-        ma=this;
-        refresh();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+
+        TextView username = headerView.findViewById(R.id.tv_navbar_uname);
+        TextView name = headerView.findViewById(R.id.tv_navbar_nama);
+        username.setText(login_data.getUsername());
+        name.setText(login_data.getNama());
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_paket, R.id.nav_list,
+                R.id.nav_transaction, R.id.nav_share, R.id.nav_logout)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+        if(i.getStringExtra("status").equals("pelanggan")){
+            hidePelanggan();
+        }
+        if(i.getStringExtra("status").equals("pekerja")){
+            hideAdmin();
+        }
     }
 
-    public void refresh() {
-        Call<GetPelanggan> kontakCall = mApiInterface.getKontak();
-        kontakCall.enqueue(new Callback<GetPelanggan>() {
-            @Override
-            public void onResponse(Call<GetPelanggan> call, Response<GetPelanggan>
-                    response) {
-                List<Pelanggan> KontakList = response.body().getListDataKontak();
-                Log.d("Retrofit Get", "Jumlah data Kontak: " +
-                        String.valueOf(KontakList.size()));
-                mAdapter = new PelangganAdapter(KontakList);
-                mRecyclerView.setAdapter(mAdapter);
-            }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-            @Override
-            public void onFailure(Call<GetPelanggan> call, Throwable t) {
-                Log.e("Retrofit Get", t.toString());
-            }
-        });
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+    private void hidePelanggan() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_list).setVisible(false);
+        nav_Menu.findItem(R.id.nav_paket).setVisible(false);
+    }
+    private void hideAdmin() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        Menu nav_Menu = navigationView.getMenu();
+//        nav_Menu.findItem(R.id.nav_list).setVisible(false);
     }
 }
