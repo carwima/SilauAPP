@@ -5,16 +5,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_home"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft  ="10dp"
+        android:layout_marginRight ="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_descBulanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pendapatan Bulan Ini"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_bulanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_descBulanan"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="Pendapatan Sample"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft  ="10dp"
+        android:layout_marginRight ="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/tv_descHarian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transaksi Hari Ini"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_harian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_descHarian"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="Jumlah Transaksi Sample"
+            android:textSize="25dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft  ="10dp"
+        android:layout_marginRight ="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+        <TextView
+            android:id="@+id/tv_descHarian2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pendapatan Hari Ini"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_harian2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_descHarian2"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="Jumlah Transaksi Sample"
+            android:textSize="25dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_insert"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.silauapp.PelangganTambah">
+    <TextView
+        android:id="@+id/tvNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Id Pelanggan : "
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/tvNomor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Id Paket : "
+        android:layout_below="@id/tvNama"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/tvUname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Berat : "
+        android:layout_below="@id/tvNomor"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/edtNamapaket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvNama"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@+id/tvNama"
+        android:hint="Id Pelanggan" />
+
+    <EditText
+        android:id="@+id/edtHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvNomor"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@+id/tvNomor"
+        android:hint="Id Paket Laundry" />
+
+    <EditText
+        android:id="@+id/edtDeskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvUname"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@+id/tvUname"
+        android:hint="Berat Laundry" />
+
+    <LinearLayout
+        android:id="@+id/Linearlayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtDeskripsi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btInserting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambahkan" />
+
+        <Button
+            android:id="@+id/btBackGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+    </LinearLayout>
+
+</RelativeLayout>

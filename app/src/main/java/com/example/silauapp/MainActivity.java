@@ -26,12 +26,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
+    private Pelanggan login_data;
+    private String Level;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent i = getIntent();
-        Pelanggan login_data = (Pelanggan)i.getSerializableExtra("sampleObject");
+        login_data = (Pelanggan)i.getSerializableExtra("sampleObject");
+        Level=i.getStringExtra("status");
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -89,10 +92,18 @@ public class MainActivity extends AppCompatActivity {
         Menu nav_Menu = navigationView.getMenu();
         nav_Menu.findItem(R.id.nav_list).setVisible(false);
         nav_Menu.findItem(R.id.nav_paket).setVisible(false);
+        nav_Menu.findItem(R.id.nav_share).setVisible(false);
     }
     private void hideAdmin() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         Menu nav_Menu = navigationView.getMenu();
+        nav_Menu.findItem(R.id.nav_share).setVisible(false);
 //        nav_Menu.findItem(R.id.nav_list).setVisible(false);
+    }
+    public String getId(){
+        return login_data.getId();
+    }
+    public String getLevel(){
+        return Level;
     }
 }

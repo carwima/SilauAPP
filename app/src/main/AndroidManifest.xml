@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PaketEdit"></activity>
+        <activity android:name=".TransaksiTambah"></activity>
+        <activity android:name=".DetailTransaksi" />
+        <activity android:name=".PaketEdit" />
         <activity android:name=".PaketTambah" />
         <activity android:name=".DetailPaket" />
         <activity android:name=".LoginActivity">
@@ -25,7 +27,7 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TransactionActiviity" />
+        <activity android:name=".TransactionActivity" />
         <activity android:name=".PelangganTambah" />
         <activity android:name=".PelangganEdit" />
         <activity android:name=".ListPelanggan" />
