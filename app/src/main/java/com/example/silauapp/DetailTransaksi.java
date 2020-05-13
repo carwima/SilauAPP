@@ -31,7 +31,6 @@ public class DetailTransaksi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_transaksi);
         tvid =  findViewById(R.id.tv_id);
@@ -42,19 +41,18 @@ public class DetailTransaksi extends AppCompatActivity {
         tvstatus = findViewById(R.id.tv_status);
         btnUpdate =  findViewById(R.id.btnUpdate);
         final Intent mIntent = getIntent();
-        tvid.setText(mIntent.getStringExtra("Id"));
-        tvidpelanggan.setText(mIntent.getStringExtra("IdPelanggan"));
-        tvtanggal.setText(mIntent.getStringExtra("Tanggal"));
-        tvidpaket.setText(mIntent.getStringExtra("IdPaket"));
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Paket selectedpaket;
-        Call<Paket> paketCall  = mApiInterface.getPaketID(mIntent.getStringExtra("Id"));
+        Call<Paket> paketCall  = mApiInterface.getPaketID(mIntent.getStringExtra("IdPaket"));
         paketCall.enqueue(new Callback<Paket>() {
             @Override
             public void onResponse(Call<Paket> call, Response<Paket> response) {
                 String harga = (Integer.parseInt(response.body().getHarga()) * Integer.parseInt(mIntent.getStringExtra("Harga")))+" ";
                 //String harga = mIntent.getStringExtra("Harga");
+                tvid.setText(mIntent.getStringExtra("Id"));
+                tvidpelanggan.setText(mIntent.getStringExtra("IdPelanggan"));
+                tvtanggal.setText(mIntent.getStringExtra("Tanggal"));
+                tvidpaket.setText(mIntent.getStringExtra("IdPaket"));
                 tvharga.setText(harga+"");
             }
 
