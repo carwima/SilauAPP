@@ -26,7 +26,8 @@ data dapat ditarik oleh retrofit untuk dijadikan objek pada aplikasi.
 Spesifikasi :
 -Dibutuhkan Komputer Server Terinstal SQLServer dan NodeJS
 ### 1. Membuat database pada SQLserver komputer server
-membuat struktur Database baru + dummy Data :
+membuat struktur Database baru + dummy Data :<br/>
+
 drop table if exists pelanggan;
 drop table if exists paket;
 drop table if exists pekerja;
