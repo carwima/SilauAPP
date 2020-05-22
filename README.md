@@ -70,7 +70,7 @@ insert into pekerja values ('Super Admin', '0821132132132','admin','admin')
 insert into paket values ('CuciKering', '4000','Cuci, dikeringkan tanpa disetrika')
 
 ### 2. Menjalankan ./server/server.js pada node js komputer server
-Server menggunakan NodeJS dengan mempublikasikan SQLServer menggunakan Node untuk menghasilkan CRUD berbentuk 
+Server menggunakan NodeJS dengan mempublikasikan SQLServer menggunakan Node untuk menghasilkan CRUD berbentuk JSON.
 
 ### 3. Melakukan pengaturan pada link di APIClient.java
 Mengganti 192.168.100.12 dengan konfigurasi IP server.
