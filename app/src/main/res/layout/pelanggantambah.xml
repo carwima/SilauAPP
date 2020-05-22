@@ -10,60 +10,82 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.silauapp.PelangganTambah">
     <TextView
+        android:id="@+id/textviewsaja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pendaftaran"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"/>
+    <TextView
         android:id="@+id/tvNama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nama : "
+        android:layout_below="@id/textviewsaja"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"/>
     <TextView
         android:id="@+id/tvNomor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nomor : "
+        android:layout_marginTop="10dp"
         android:layout_below="@id/tvNama"
         android:textSize="20sp"/>
     <TextView
         android:id="@+id/tvUname"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Username : "
         android:layout_below="@id/tvNomor"
         android:textSize="20sp"/>
-    <TextView
-        android:id="@+id/tvPasswd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password : "
-        android:layout_below="@id/tvUname"
-        android:textSize="20sp"/>
+
     <EditText
         android:id="@+id/edtNama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nama"
+        android:layout_alignBaseline="@+id/tvNama"
+        android:layout_marginLeft="56dp"
         android:layout_toRightOf="@+id/tvNama"
-        android:layout_alignBaseline="@+id/tvNama"/>
+        android:hint="Nama" />
+
     <EditText
         android:id="@+id/edtNomor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nomor"
+        android:layout_alignBaseline="@+id/tvNomor"
+        android:layout_marginLeft="49dp"
         android:layout_toRightOf="@+id/tvNomor"
-        android:layout_alignBaseline="@+id/tvNomor"/>
+        android:hint="Nomor" />
+
     <EditText
         android:id="@+id/edtUname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:layout_alignBaseline="@+id/tvUname"
+        android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/tvUname"
-        android:layout_alignBaseline="@+id/tvUname"/>
+        android:hint="Username" />
+
     <EditText
         android:id="@+id/edtPasswd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:layout_alignBaseline="@+id/tvPasswd"
+        android:layout_marginLeft="22dp"
         android:layout_toRightOf="@+id/tvPasswd"
-        android:layout_alignBaseline="@+id/tvPasswd"/>
+        android:hint="Password" />
+
+    <TextView
+        android:id="@+id/tvPasswd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUname"
+        android:layout_marginTop="10dp"
+        android:text="Password : "
+        android:textSize="20sp" />
+
     <LinearLayout
         android:id="@+id/Linearlayout2"
         android:layout_width="wrap_content"
@@ -71,7 +93,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/tvPasswd"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp">
         <Button
             android:id="@+id/btInserting"

@@ -10,6 +10,7 @@ public class HomeStats {
     }
 
     public String getHomestats() {
+        if(stats==null) stats = "0";
         return stats;
     }
 }

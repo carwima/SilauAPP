@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,9 +23,13 @@ import com.example.silauapp.Rest.ApiClient;
 import com.example.silauapp.Rest.ApiInterface;
 import com.example.silauapp.TransaksiTambah;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
-
+import java.util.Date;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +41,9 @@ public class TransactionFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TextView tvDay;
     public static TransactionFragment ma;
+    private String namahari;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +53,6 @@ public class TransactionFragment extends Fragment {
         String levelfromActivity = activity.getLevel();
         super.onCreate(savedInstanceState);
         View root = inflater.inflate(R.layout.fragment_transaction, container, false);
-
 
         btIns = root.findViewById(R.id.btInsPaket);
         if(levelfromActivity.equals("pelanggan")){

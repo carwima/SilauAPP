@@ -2,6 +2,8 @@ package com.example.silauapp.Model.transaksi;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Trans {
     @SerializedName("id")
     private String id;

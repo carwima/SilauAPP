@@ -30,8 +30,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-    TextView descBulanan, Bulanan, descHarian, Harian, descHarian1, Harian1;
-    LinearLayout LL3;
+    TextView descBulanan, Bulanan, descHarian, Harian, descHarian1, Harian1,descHarian2, Harian2;
+    LinearLayout LL3, LL4;
     ApiInterface mApiInterface;
     public static HomeFragment ma;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -47,14 +47,18 @@ public class HomeFragment extends Fragment {
         Harian = root.findViewById(R.id.tv_harian);
         descHarian1 = root.findViewById(R.id.tv_descHarian2);
         Harian1 = root.findViewById(R.id.tv_harian2);
+        descHarian2 = root.findViewById(R.id.tv_descHarian3);
+        Harian2 = root.findViewById(R.id.tv_harian3);
         LL3 = root.findViewById(R.id.linearLayout2);
+        LL4 = root.findViewById(R.id.linearLayout3);
 
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         ma = this;
         if(levelfromActivity.equals("pelanggan")){
-            LL3.setVisibility(View.GONE);
             descBulanan.setText("Laundry Belum Diambil");
             descHarian.setText("Total Laundry");
+            descHarian1.setText("Tagihan Laundry");
+            descHarian2.setText("Transaksi Dilakukan");
             Call<HomeStats> kontakCall = mApiInterface.getBelumdiambil(IDFromActivity);
             kontakCall.enqueue(new Callback<HomeStats>() {
                 @Override
@@ -81,9 +85,37 @@ public class HomeFragment extends Fragment {
                     Log.e("ERROR ON Retrofit Get", t.toString());
                 }
             });
-            //fungsi 1;
+
+            kontakCall = mApiInterface.getBelumdiambil1(IDFromActivity);
+            kontakCall.enqueue(new Callback<HomeStats>() {
+                @Override
+                public void onResponse(Call<HomeStats> call, Response<HomeStats>
+                        response) {
+                    Harian1.setText(response.body().getHomestats());
+                }
+
+                @Override
+                public void onFailure(Call<HomeStats> call, Throwable t) {
+                    Log.e("ERROR ON Retrofit Get", t.toString());
+                }
+            });
+
+            kontakCall = mApiInterface.getTotal1(IDFromActivity);
+            kontakCall.enqueue(new Callback<HomeStats>() {
+                @Override
+                public void onResponse(Call<HomeStats> call, Response<HomeStats>
+                        response) {
+                    Harian2.setText(response.body().getHomestats());
+                }
+
+                @Override
+                public void onFailure(Call<HomeStats> call, Throwable t) {
+                    Log.e("ERROR ON Retrofit Get", t.toString());
+                }
+            });
         }
         else if(levelfromActivity.equals("pekerja")){
+            LL4.setVisibility(View.GONE);
             Call<HomeStats> kontakCall = mApiInterface.getPendapatan();
             kontakCall.enqueue(new Callback<HomeStats>() {
                 @Override

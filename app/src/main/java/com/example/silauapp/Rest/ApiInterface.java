@@ -101,4 +101,9 @@ public interface ApiInterface {
     Call<HomeStats> getBelumdiambil(@Query("id") String id);
     @GET("total")
     Call<HomeStats> getTotal(@Query("id") String id);
+
+    @GET("belumdiambil1")
+    Call<HomeStats> getBelumdiambil1(@Query("id") String id);
+    @GET("total1")
+    Call<HomeStats> getTotal1(@Query("id") String id);
 }
